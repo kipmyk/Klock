@@ -48,7 +48,10 @@ jobs:
         uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: Klock.dmg
+          files: ${{ github.workspace }}/Klock.dmg
+          name: Release ${{ github.ref_name }}
+          tag_name: ${{ github.ref }}
+          overwrite: true
           fail_on_unmatched_files: true
           draft: false
           prerelease: false
