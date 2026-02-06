@@ -27,3 +27,9 @@ rm -f "${DMG_NAME}"
 hdiutil create -volname "${APP_NAME}" -srcfolder "${APP_BUNDLE}" -ov -format UDZO "${DMG_NAME}"
 
 echo "✅ Done! ${DMG_NAME} created successfully."
+
+SHA256=$(shasum -a 256 "${DMG_NAME}" | awk '{print $1}')
+echo "--------------------------------------------------"
+echo "SHA256 Checksum for Homebrew Cask:"
+echo "${SHA256}"
+echo "--------------------------------------------------"
