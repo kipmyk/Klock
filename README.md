@@ -19,20 +19,20 @@ A premium, status-aware macOS Menu Bar app for tracking global time and weather 
 
 ### 🍺 Homebrew
 
-You can install **Klock** via Homebrew Cask. First, tap the repository (assuming your tap is named `klock`):
+You can install **Klock** via Homebrew Cask. Since the repository is not named `homebrew-klock`, you need to tap it using the full URL:
 
 ```bash
-brew tap kipmyk/klock
+brew tap kipmyk/klock https://github.com/kipmyk/Klock
 brew install --cask klock
 ```
 
-Or install directly:
+Or install directly (this will still attempt to tap automatically):
 
 ```bash
 brew install --cask kipmyk/klock/klock
 ```
 
-*Note: The Cask is located in the `Casks/` directory of this repo. Ensure your Homebrew Tap is correctly configured to point here.*
+*Note: The Cask is located in the `Casks/` directory. The explicit tap command above is required because Homebrew expects the repository name to start with `homebrew-` for the shorthand command.*
 
 ### 💾 Manual Download
 1. Download the latest `Klock.dmg` from the [Releases](https://github.com/kipmyk/Klock/releases) page.
