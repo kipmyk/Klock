@@ -2,8 +2,13 @@ name: Release
 
 on:
   push:
+    branches:
+      - main
     tags:
       - 'v*' # Trigger on tags like v1.0, v1.0.1, etc.
+  pull_request:
+    branches:
+      - main
 
 permissions:
   contents: write
