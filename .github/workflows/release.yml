@@ -51,7 +51,7 @@ jobs:
           files: ${{ github.workspace }}/Klock.dmg
           name: Release ${{ github.ref_name }}
           tag_name: ${{ github.ref }}
-          overwrite: true
+          overwrite_files: true
           fail_on_unmatched_files: true
           draft: false
           prerelease: false
