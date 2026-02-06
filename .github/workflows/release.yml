@@ -64,6 +64,13 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
+          git fetch origin main
+          git checkout main
           git add Casks/klock.rb
-          git commit -m "chore(homebrew): auto-update Cask for ${{ github.ref_name }}"
-          git push origin HEAD:main
+          # Only commit and push if there are changes
+          if ! git diff --cached --quiet; then
+            git commit -m "chore(homebrew): auto-update Cask for ${{ github.ref_name }}"
+            git push origin main
+          else
+            echo "No changes to commit in Casks/klock.rb"
+          fi
