@@ -25,12 +25,19 @@ jobs:
         run: |
           chmod +x package.sh
           ./package.sh
+          ls -lh *.dmg # Verify DMG exists
+
+      - name: Debug File Structure
+        run: |
+          ls -R .build/
+          ls -R Klock.app/
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/tags/')
         with:
           files: Klock.dmg
+          fail_on_unmatched_files: true
           draft: false
           prerelease: false
           generate_release_notes: true

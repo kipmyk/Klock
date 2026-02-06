@@ -11,13 +11,22 @@ DMG_NAME="${APP_NAME}.dmg"
 echo "🔨 Building ${APP_NAME} in release mode..."
 swift build -c release
 
+# Dynamically find the binary path
+BIN_PATH=$(swift build -c release --show-bin-path)
+EXECUTABLE="${BIN_PATH}/${APP_NAME}"
+
+if [ ! -f "${EXECUTABLE}" ]; then
+    echo "❌ Error: Executable not found at ${EXECUTABLE}"
+    exit 1
+fi
+
 echo "📦 Creating app bundle..."
 rm -rf "${APP_BUNDLE}"
 mkdir -p "${APP_BUNDLE}/Contents/MacOS"
 mkdir -p "${APP_BUNDLE}/Contents/Resources"
 
 # Copy the executable
-cp ".build/release/${APP_NAME}" "${APP_BUNDLE}/Contents/MacOS/"
+cp "${EXECUTABLE}" "${APP_BUNDLE}/Contents/MacOS/"
 
 # Copy Info.plist
 cp "Info.plist" "${APP_BUNDLE}/Contents/"
