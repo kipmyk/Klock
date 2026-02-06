@@ -1,6 +1,6 @@
 cask "klock" do
-  version "1.0"
-  sha256 "fc6e16a07255c55ac86dc714a82e89e445dcbb9841fae8488a0814abc689e2dc"
+  version "1.0.0"
+  sha256 "e1a8ff7824fd3b5dbf359df2e7074aae9ed52858710925cadf049e5c6f93a69f"
 
   url "https://github.com/kipmyk/Klock/releases/download/v#{version}/Klock.dmg"
   name "Klock"
